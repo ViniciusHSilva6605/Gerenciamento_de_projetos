@@ -1,20 +1,38 @@
-# Playlist YouTube: Introdução ao Django
+3 Competência em Django
 
-Código-fonte produzido durante os vídeos da playlist de introdução ao Django no YouTube da TreinaWeb.
 
-## Setup do ambiente
-
-Caso precise de ajuda para configurar o ambiente, siga as instruções do documento [SETUP.md](./.github/SETUP.md).
-
-## Lista de Commits
-
-| Video    | Commit                                                                             | Link                                                                                                                                 |
-| -------- | ---------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------ |
-| Vídeo 01 | Vídeo 01 - Como criar e executar um projeto Django?                                | [Download](https://github.com/treinaweb/treinaweb-youtube-introducao-ao-django/archive/8eb71d480ecfbe21c8caa6b1957c4222ac8490f3.zip) |
-| Vídeo 02 | Vídeo 02 - Como é a estrutura de pastas de um projeto Django e como criar uma app? | [Download](https://github.com/treinaweb/treinaweb-youtube-introducao-ao-django/archive/8aeb62a1062d1212566ef99e432cb84117ab2395.zip) |
-| Vídeo 03 | Vídeo 03 - Como funcionam os modelos e as migrações no Django?                     | [Download](https://github.com/treinaweb/treinaweb-youtube-introducao-ao-django/archive/122c2572d5e0f05706d5decb252c2ccae650794c.zip) |
-| Vídeo 04 | Vídeo 04 - Criando a página de listagem de tarefas                                 | [Download](https://github.com/treinaweb/treinaweb-youtube-introducao-ao-django/archive/22ddf733814cf611cf4fef02818c327734444b0d.zip) |
-| Vídeo 05 | Vídeo 05 - Criando a página de cadastro de tarefas                                 | [Download](https://github.com/treinaweb/treinaweb-youtube-introducao-ao-django/archive/5e7a5f8ae5cbfcbd4f0f782c0706bb96f99a2cf8.zip) |
-| Vídeo 06 | Vídeo 06 - Criando a página de edição de tarefas                                   | [Download](https://github.com/treinaweb/treinaweb-youtube-introducao-ao-django/archive/47d665e39b46d7728b4b594c8627cbafbbbc66db.zip) |
-| Vídeo 07 | Vídeo 07 - Criando a página de exclusão de tarefas                                 | [Download](https://github.com/treinaweb/treinaweb-youtube-introducao-ao-django/archive/8b729d09d29a5d7e6f081f70a7b9fc22edebe50a.zip) |
-| Vídeo 08 | Vídeo 08 - Criando a funcionalidade de conclusão de tarefa                         | [Download](https://github.com/treinaweb/treinaweb-youtube-introducao-ao-django/archive/b9fc39de47d7149e456b258b9402dd5c4a7c4b6c.zip) |
+Utilizando o Django, crie um sistema que simule o gerenciamento de projetos para diferentes 
+empresas.
+A aplicação deve permitir a adição/exclusão/edição de novas empresas e projetos, assim como 
+a atribuição e exclusão dos usuarios nos projetos criados, deve ser integrada com um banco de 
+dados relacional de sua preferência e frontend usando templates, cumprindo os seguintes 
+requisitos:
+Objetivos:
+. Cada usuário passará por uma autenticação simples, apenas com login e senha.
+. A página inicial deve conter as empresas cadastradas que o usuário está vinculado.
+. A aplicação deverá possibilitar a exibição dos projetos vinculados ao usuário quando for
+realizado o acesso à página da empresa.
+. Construa o banco de dados com relacionamentos que possam validar o sistema, ou seja:
+. Somente o criador da empresa pode excluir a empresa com todos os projetos 
+contidos.
+. Somente o criador do projeto pode excluí-lo.
+. Somente o criador do projeto pode adicionar novas pessoas ou remover as que já 
+estão.
+. Desenvolva CRUDs básicos, relacionados: um para o controle de usuários e outro para o 
+controle dos projetos e empresas.
+. Desenvolva o frontend utilizando bibliotecas e frameworks de sua preferência, como por 
+exemplo, o bootstrap.
+. Crie os seguintes usuários base:
+o Caso1: Um usuário que criou uma empresa ( login: user1 | senha: senha_caso1 );
+o Caso2: Um usuário que criou três projetos na empresa do Caso1 ( login: user2 | 
+senha: senha_caso2 );
+o Caso3: Crie dois usuários, um usuário que participa de dois dos projetos criados 
+no Caso2 ( login: user3 | senha: senha_caso3 ) e outro que participa de somente 
+um ( login: user4 | senha: senha_caso4 ).
+o Caso4: Crie mais uma empresa com o usuário do Caso1.
+Critérios de avaliação:
+ Correto funcionamento da aplicação;
+ Estrutura do projeto Django (configuração, aplicativos, modelos, etc.).
+ Funcionalidade de formulários para adicionar e editar projetos.
+ Organização e clareza do código;
+ Uso de templates para renderizar as páginas
