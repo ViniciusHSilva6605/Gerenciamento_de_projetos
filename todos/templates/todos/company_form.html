@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block page_title %}
+  {% if company.pk %}
+    Editar Empresa
+  {% else %}
+    Nova Empresa
+  {% endif %}
+{% endblock page_title %}
+
+{% block content %}
+  <h1>{% if company.pk %}Editar Empresa{% else %}Nova Empresa{% endif %}</h1>
+
+  <form method="POST">
+    {% csrf_token %}
+
+    {{ form|crispy }}
+
+    <button type="submit" class="btn btn-primary">Salvar</button>
+  </form>
+{% endblock content %}

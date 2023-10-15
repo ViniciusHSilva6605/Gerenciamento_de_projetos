@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h2>Excluir Projeto</h2>
+  <p>Tem certeza de que deseja excluir este projeto?</p>
+  <form method="post">
+    {% csrf_token %}
+    <button type="submit" class="btn btn-danger">Sim, excluir</button>
+  </form>
+  <a href="{% url 'company_detail_list' pk=project.company.id %}" class="btn btn-secondary">Cancelar</a>
+{% endblock %}

@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block page_title %}
+  {% if project.pk %}
+    Editar Projeto
+  {% else %}
+    Novo Projeto
+  {% endif %}
+{% endblock page_title %}
+
+{% block content %}
+  <h1>{% if project.pk %}Editar Projeto{% else %}Novo Projeto{% endif %}</h1>
+
+  <form method="POST">
+    {% csrf_token %}
+
+    {{ form|crispy }}
+
+    <button type="submit" class="btn btn-primary">Salvar</button>
+  </form>
+
+  <a href="{% url 'company_create' %}" class="btn btn-primary">Nova Empresa</a>
+</div>
+{% endblock content %}

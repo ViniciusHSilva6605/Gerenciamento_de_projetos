@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block page_title %}
+    Lista de Projetos da Empresa
+{% endblock page_title %}
+
+{% block content %}
+    <h1>Lista de Projetos da Empresa</h1>
+
+    <a href="{% url 'project_create' company_id=company_id %}" class="btn btn-primary">Novo Projeto</a>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Nome do Projeto</th>
+                <th scope="col">Ações</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for project in object_list %}
+                <tr>
+                    <th scope="row">{{ project.pk }}</th>
+                    <td>{{ project.name }}</td>
+                    <td>
+                        <a href="{% url 'project_update' company_id=company_id pk=project.pk %}" class="btn btn-secondary btn-sm">Editar</a>
+                        <a href="{% url 'project_delete' company_id=company_id pk=project.pk %}" class="btn btn-danger btn-sm">Excluir</a>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock content %}

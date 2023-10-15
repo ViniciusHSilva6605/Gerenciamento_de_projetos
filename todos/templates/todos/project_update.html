@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h2>Atualizar Projeto</h2>
+  <form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" class="btn btn-primary">Salvar</button>
+  </form>
+  <a href="{% url 'company_detail_list' pk=project.company.id %}" class="btn btn-secondary">Voltar para a lista de projetos</a>
+{% endblock %}
