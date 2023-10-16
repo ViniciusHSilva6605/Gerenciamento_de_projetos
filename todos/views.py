@@ -66,7 +66,7 @@ class CompanyCreateView(CreateView):
 # Visualização para atualizar uma empresa
 class CompanyUpdateView(UpdateView):
     model = Company
-    fields = ['name']
+    fields = ['name', 'creator']
     template_name = "todos/company_update.html"
     success_url = reverse_lazy('todo_list')
 
