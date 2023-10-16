@@ -1,18 +1,15 @@
-{% extends 'base/base.html' %}
+{% extends 'base.html' %}
 
-{% block 'title' %}
-    <title>Registro de Usuário</title>
-{% endblock %}
-
-{% block 'body' %}
-    <div class="container register-login d-flex justify-content-center">
-        <p class="text-primary-emphasis titulo d-flex justify-content-center py-5">REGISTRO DE USUÁRIO</p>
-        <form method="post" class="text-body">
-            {% csrf_token %}
-            {{ user_form.as_p }}
-            <!-- {{ profile_form.as_p }} -->
-            <button class="btn btn-primary rounded-pill" type="submit">REGISTRAR</button>
-        </form>
-    </div>
-{% endblock %}
+<div id="navbar">
+    <ul>
+      {% if user.is_authenticated %}
+        <li><a href="{% url 'todo_list' %}">Página Inicial</a></li>
+        <li><a href="{% url 'logout' %}">Logout</a></li>
+      {% else %}
+        <li><a href="{% url 'login' %}">Login</a></li>
+        <li><a href="{% url 'register' %}">Cadastro</a></li> <!-- Adicione esta linha -->
+      {% endif %}
+    </ul>
+  </div>
+  
 
