@@ -20,5 +20,7 @@ class Project(models.Model):
 class UserProfile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     companies = models.ManyToManyField(Company, related_name='memberships')
+    def __str__(self):
+        return self.user.username
 
 
