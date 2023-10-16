@@ -5,6 +5,23 @@ from .models import  Company, Project, UserProfile
 from django.views.generic.edit import CreateView
 from .models import Company
 from django.contrib.auth.models import User
+from django.contrib.auth.forms import UserCreationForm
+from django.shortcuts import render, redirect
+from django.views import View
+
+class RegisterView(View):
+    template_name = 'todos/register.html'
+
+    def get(self, request):
+        form = UserCreationForm()
+        return render(request, self.template_name, {'form': form})
+
+    def post(self, request):
+        form = UserCreationForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('login')  # Redireciona para a página de login após o registro bem-sucedido
+        return render(request, self.template_name, {'form': form})
 
 
 # Visualização para listar todas as empresas do usuário logado
@@ -76,5 +93,5 @@ class ProjectDeleteView(DeleteView):
     model = Project
     template_name = 'todos/project_delete.html'  
     def get_success_url(self):
-        return reverse_lazy('company_detail_list', kwargs={'pk': self.kwargs['company_id']})
+        reverse_lazy('todos/project_delete.html')
 
