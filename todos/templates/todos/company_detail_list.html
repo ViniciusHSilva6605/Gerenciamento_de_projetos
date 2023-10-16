@@ -13,5 +13,4 @@
     {% endfor %}
   </ul>
   <a href="{% url 'company_list' %}" class="btn btn-secondary">Voltar para a lista de empresas</a>
-  <a href="{% url 'project_create' company_id=object_list.0.company.id %}" class="btn btn-primary">Criar Novo Projeto</a>
   {% endblock %}
