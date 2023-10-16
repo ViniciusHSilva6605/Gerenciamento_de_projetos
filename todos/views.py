@@ -2,16 +2,11 @@ from django.views.generic import ListView, CreateView, UpdateView, DeleteView, V
 from django.urls import reverse_lazy
 from django.shortcuts import get_object_or_404, redirect
 from django.urls import reverse_lazy
-from django.contrib.auth.decorators import login_required
 from .models import Todo, Company, Project
-from django.contrib.auth.views import LoginView
 import os
-from django.contrib.auth import login
-from django.shortcuts import render, redirect
-from django.contrib.auth.mixins import LoginRequiredMixin
+from django.shortcuts import  redirect
 from django.views.generic.edit import CreateView
 from django.urls import reverse_lazy
-from django.contrib.auth.mixins import LoginRequiredMixin
 from .models import Company
 from django.contrib.auth.models import User
 
