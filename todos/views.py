@@ -47,7 +47,7 @@ class CompanyListView(ListView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['project_list'] = Project.objects.all()  # Adicione a lista de projetos ao contexto
+        context['project_list'] = Project.objects.all() 
         return context
 
 
@@ -55,12 +55,12 @@ class CompanyListView(ListView):
 class CompanyCreateView(CreateView):
     model = Company
     fields = ['name', 'creator'] 
-    template_name = 'todos/company_form.html'  # Atualize o caminho do template aqui
+    #template_name = 'todos/company_form.html'  
     success_url = reverse_lazy('todo_list')
 
-    def form_valid(self, form):
-        form.instance.creator = User.objects.first()  # Defina o criador como o primeiro usuário
-        return super().form_valid(form)
+    #def form_valid(self, form):
+    #    form.instance.creator = User.objects.first()  # Defina o criador como o primeiro usuário
+    #    return super().form_valid(form)
 
 
 # Visualização para atualizar uma empresa
@@ -99,8 +99,7 @@ class ProjectCreateView(CreateView):
 class ProjectUpdateView(UpdateView):
     model = Project
     fields = ['name']
-    template_name = "todos/"
-    #Criar template project_update.html
+    template_name = "todos/project_update.html"
     def get_success_url(self):
         return reverse_lazy('company_detail_list', kwargs={'pk': self.kwargs['company_id']})
 
