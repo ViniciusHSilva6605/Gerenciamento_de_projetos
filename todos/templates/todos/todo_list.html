@@ -6,7 +6,7 @@
 
 
 {% block content %}
-    <h1>Lista de Projetos</h1>
+    <h1>Lista de Empresas</h1>
 
     {% if todo_list %}
         <table class="table">
@@ -27,6 +27,14 @@
                         <th scope="row">{{ project.pk }}</th>
                         <td>{{ project.name }}</td>
                         <td>{{ project.created_at }}</td>
+
+
+                    
+
+
+                        
+
+                        
                        
                        
                     </tr>
@@ -50,7 +58,7 @@
 
 
 
-    <h1>Lista de Empresas</h1>
+    <h1>Lista de Projetos</h1>
 
     {% if todo_list %}
         <table class="table">
@@ -60,9 +68,9 @@
                 <th scope="col">Projeto</th>
                 <th scope="col">Críado em</th>
                 <th scope="col">Criador</th>
-                <th scope="col">Empresa</th>
-                <th scope="col">Membros</th>
                 <th scope="col">Ações</th>
+                <th scope="col">Membros</th>
+                <th scope="col">Empresa</th>
                 
             </tr>
             </thead>
