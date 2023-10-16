@@ -4,6 +4,13 @@
     <title>Login</title>
 {% endblock %}
 
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input type="hidden" name="next" value="{{ request.GET.next }}">
+    <button type="submit">Login</button>
+</form>
+
 {% block 'body' %}
     <div class="container d-flex align-align-items-center login">
         <div class="container register-login d-flex justify-content-center">
