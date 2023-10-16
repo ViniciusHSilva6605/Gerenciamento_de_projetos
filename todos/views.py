@@ -107,11 +107,7 @@ class ProjectUpdateView(UpdateView):
 
 class ProjectDeleteView(DeleteView):
     model = Project
-    template_name = "todos/project_delete.html"
-   
-
+    template_name = 'todos/project_delete.html'  
     def get_success_url(self):
         return reverse_lazy('company_detail_list', kwargs={'pk': self.kwargs['company_id']})
-
-
 
