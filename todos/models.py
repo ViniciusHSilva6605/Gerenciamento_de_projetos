@@ -1,6 +1,9 @@
 from datetime import date
 from django.contrib.auth.models import User
 from django.db import models
+from django.utils import timezone
+
+
 
 class Todo(models.Model):
     title = models.CharField(
@@ -22,9 +25,13 @@ class Todo(models.Model):
 
 
 
+
+
 class Company(models.Model):
     name = models.CharField(max_length=100)
+    created_at = models.DateTimeField(default=timezone.now)  # Define um valor padrão usando a data e hora atual
     creator = models.ForeignKey(User, on_delete=models.CASCADE)
+
 
 class Project(models.Model):
     name = models.CharField(max_length=100)
