@@ -4,7 +4,10 @@
   <h2>Lista de Projetos da Empresa {{ object_list.0.company.name }}</h2>
   <ul>
     {% for project in object_list %}
+    
     <li><a href="{% url 'project_update' company_id=project.company.id pk=project.id %}">{{ project.name }}</a></li>
+    <a href="{% url 'project_delete' pk=project.pk %}" class="btn btn-danger btn-sm">Excluir</a>
+
     {% empty %}
       <li>Nenhum projeto encontrado.</li>
     {% endfor %}
