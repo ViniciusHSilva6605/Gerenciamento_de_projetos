@@ -1,11 +1,8 @@
 from django.views.generic import ListView, CreateView, UpdateView, DeleteView, View
 from django.urls import reverse_lazy
-from django.shortcuts import get_object_or_404, redirect
 from django.urls import reverse_lazy
 from .models import  Company, Project, UserProfile
-from django.shortcuts import  redirect
 from django.views.generic.edit import CreateView
-from django.urls import reverse_lazy
 from .models import Company
 from django.contrib.auth.models import User
 
