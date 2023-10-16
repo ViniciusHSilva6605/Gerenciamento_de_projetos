@@ -25,17 +25,9 @@ from todos.views import (
 
 
 urlpatterns = [
-    
-    path('logout/', auth_views.LogoutView.as_view(), name='logout'),
-    path("admin/", admin.site.urls),
-    path('accounts/', include('django.contrib.auth.urls')),  # Inclui as URLs de autenticação embutidas
+   
     path("", CompanyListView.as_view(), name="todo_list"),
-    #path("", TodoListView.as_view(), name="todo_list"),
-    path("create", TodoCreateView.as_view(), name="todo_create"),
-    path("update/<int:pk>", TodoUpdateView.as_view(), name="todo_update"),
-    path("delete/<int:pk>", TodoDeleteView.as_view(), name="todo_delete"),
-    path("complete/<int:pk>", TodoCompleteView.as_view(), name="todo_complete"),
-    
+
     # Empresas
     path("companies/", CompanyListView.as_view(), name="company_list"),
     path("companies/create", CompanyCreateView.as_view(), name="company_create"),
