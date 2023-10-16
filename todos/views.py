@@ -98,7 +98,7 @@ class ProjectCreateView(CreateView):
 # Visualização para atualizar um projeto (adicionar lógica de autorização necessária)
 class ProjectUpdateView(UpdateView):
     model = Project
-    fields = ['name']
+    fields = ['name','creator','company','members']
     template_name = "todos/project_update.html"
     def get_success_url(self):
         return reverse_lazy('company_detail_list', kwargs={'pk': self.kwargs['company_id']})
