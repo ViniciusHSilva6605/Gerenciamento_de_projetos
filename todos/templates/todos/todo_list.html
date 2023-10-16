@@ -34,7 +34,7 @@
             </tbody>
         </table>
     {% else %}
-        <p>Não há tarefas cadastradas</p>
+        <p>Não há projetos cadastradas</p>
     {% endif %}
 
  
@@ -67,7 +67,7 @@
             </tr>
             </thead>
             <tbody>
-                {% for company in company_list %}
+                {% for company in todo_list %}
                     <tr>
                         <th scope="row">{{ company.pk }}</th>
                         <td>{{ company.name }}</td>
@@ -94,7 +94,7 @@
             </tbody>
         </table>
     {% else %}
-        <p>Não há tarefas cadastradas</p>
+        <p>Não há empresas cadastradas</p>
     {% endif %}
 
 
