@@ -46,7 +46,7 @@ urlpatterns = [
      # Projetos
     path("projects/create/<int:company_id>", ProjectCreateView.as_view(), name="project_create"),
     path("projects/update/<int:company_id>/<int:pk>", ProjectUpdateView.as_view(), name="project_update"),
-    path("projects/delete/<int:company_id>/<int:pk>", ProjectDeleteView.as_view(), name="project_delete"),
+    path('projects/delete/<int:pk>', ProjectDeleteView.as_view(), name='project_delete'),
     
     
 ]
