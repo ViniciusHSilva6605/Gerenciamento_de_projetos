@@ -3,18 +3,14 @@ from django.urls import reverse_lazy
 from django.shortcuts import get_object_or_404, redirect
 from django.urls import reverse_lazy
 from .models import Todo, Company, Project
-import os
 from django.shortcuts import  redirect
 from django.views.generic.edit import CreateView
 from django.urls import reverse_lazy
 from .models import Company
 from django.contrib.auth.models import User
 
-directory = os.path.dirname(os.getcwd())
 
 
-
-    
 class TodoListView(ListView):
     model = Todo
 
