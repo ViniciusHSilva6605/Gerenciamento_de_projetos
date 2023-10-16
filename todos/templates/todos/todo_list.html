@@ -1,113 +1,65 @@
 {% extends 'base.html' %}
 
 {% block page_title %}
-    Lista de Tarefas
+    Lista de Empresas
 {% endblock page_title %}
 
-
 {% block content %}
-    <h1>Lista de Projetos</h1>
-
-    {% if todo_list %}
-        <table class="table">
-            <thead>
-            <tr>
-                <th scope="col">#</th>
-                <th scope="col">Empresa</th>
-                <th scope="col">Críado em</th>
-                <th scope="col">Data de entrega</th>
-                <th scope="col">Finalizado em</th>
-                <th scope="col">Ações</th>
-                
-            </tr>
-            </thead>
-            <tbody>
-                {% for project in todo_list %}
-                    <tr>
-                        <th scope="row">{{ project.pk }}</th>
-                        <td>{{ project.name }}</td>
-                        <td>{{ project.created_at }}</td>
-
-
-                    
-
-
-                        
-
-                        
-                       
-                       
-                    </tr>
-                {% endfor %}
-            </tbody>
-        </table>
-    {% else %}
-        <p>Não há projetos cadastradas</p>
-    {% endif %}
-
- 
-
-
-
-
-
-
-
-
-
-
-
-
     <h1>Lista de Empresas</h1>
 
-    {% if todo_list %}
-        <table class="table">
-            <thead>
+    <a href="{% url 'company_create' %}" class="btn btn-primary">Nova Empresa</a>
+
+    <table class="table">
+        <thead>
             <tr>
                 <th scope="col">#</th>
-                <th scope="col">Projeto</th>
-                <th scope="col">Críado em</th>
-                <th scope="col">Criador</th>
+                <th scope="col">Nome da Empresa</th>
                 <th scope="col">Ações</th>
-                <th scope="col">Membros</th>
-                <th scope="col">Empresa</th>
-                
             </tr>
-            </thead>
-            <tbody>
-                {% for company in todo_list %}
-                    <tr>
-                        <th scope="row">{{ company.pk }}</th>
-                        <td>{{ company.name }}</td>
-                        <td>{{ company.created_at }}</td>
-                        <td>{{ company.creator }}</td>
-                        
-                        <td>
-                            <a 
-                                href="{% url 'company_delete' pk=company.pk %}" 
-                                class="btn btn-primary btn-sm {% if company.finished_at %}disabled{% endif %}"
-                            >
-                                Concluir
-                            </a>
-                            <a
-                                href="{% url 'company_update' pk=company.pk %}" 
-                                class="btn btn-secondary btn-sm {% if company.finished_at %}disabled{% endif %}"
-                            >
-                                Editar
-                            </a>
-                            <a href="{% url 'company_delete' pk=company.pk %}" class="btn btn-danger btn-sm">Excluír</a>
-                        </td>
-                    </tr>
-                {% endfor %}
-            </tbody>
-        </table>
-    {% else %}
-        <p>Não há empresas cadastradas</p>
-    {% endif %}
+        </thead>
+        <tbody>
+            {% for company in object_list %}
+                <tr>
+                    <th scope="row">{{ company.pk }}</th>
+                    <td>{{ company.name }}</td>
+                    <td>
+                        <a href="{% url 'company_detail_list' pk=company.pk %}" class="btn btn-info btn-sm">Projetos</a>
+                        <a href="{% url 'company_update' pk=company.pk %}" class="btn btn-secondary btn-sm">Editar</a>
+                        <a href="{% url 'company_delete' pk=company.pk %}" class="btn btn-danger btn-sm">Excluir</a>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
 
 
 
 
 
 
+
+    <h1>Lista de Projetos da Empresa</h1>
+
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Nome do Projeto</th>
+                <th scope="col">Ações</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for project in object_list %}
+                <tr>
+                    <th scope="row">{{ project.pk }}</th>
+                    <td>{{ project.name }}</td>
+                    <td>
+                        <a href="{% url 'project_update' company_id=1 pk=project.pk %}" class="btn btn-secondary btn-sm">Editar</a>
+                        <a href="{% url 'project_delete' company_id=1 pk=project.pk %}" class="btn btn-danger btn-sm">Excluir</a>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
 {% endblock content %}
