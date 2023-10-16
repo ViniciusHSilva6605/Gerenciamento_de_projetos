@@ -1,16 +1,10 @@
 from django.contrib import admin
 from django.urls import path, include
 from django.contrib.auth import views as auth_views
-from todos.views import TodoListView
 from django.urls import path, include
 
 
 from todos.views import (
-    TodoListView,
-    TodoCreateView,
-    TodoUpdateView,
-    TodoDeleteView,
-    TodoCompleteView,
     CompanyListView,
     CompanyCreateView,
     CompanyUpdateView,
