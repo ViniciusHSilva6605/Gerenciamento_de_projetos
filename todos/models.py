@@ -22,5 +22,6 @@ class UserProfile(models.Model):
     companies = models.ManyToManyField(Company, related_name='memberships')
     def __str__(self):
         return self.user.username
+    
 
 

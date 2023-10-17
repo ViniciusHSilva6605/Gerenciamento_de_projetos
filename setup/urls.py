@@ -1,9 +1,11 @@
 from django.urls import path
 from django.contrib.auth import views as auth_views
 from todos import views
+app_name = 'todos'
 
 
 from todos.views import (
+
     CompanyListView,
     CompanyCreateView,
     CompanyUpdateView,
@@ -16,11 +18,11 @@ from todos.views import (
 
 urlpatterns = [
     
-    path('login/', auth_views.LoginView.as_view(template_name='registration/login.html'), name='login'),
-    path('logout/', auth_views.LogoutView.as_view(), name='logout'),
-    path('register/', views.RegisterView.as_view(), name='register'),
-
+    
     path("", CompanyListView.as_view(), name="todo_list"),
+    path('login/', views.LoginView.as_view(), name='login'),
+    path('logout/', views.LogoutView.as_view(), name='logout'),
+    path('register/', views.RegisterView.as_view(), name='register'),
 
     # Empresas
     path("companies/", CompanyListView.as_view(), name="company_list"),

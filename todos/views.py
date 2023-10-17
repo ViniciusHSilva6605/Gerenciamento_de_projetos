@@ -1,28 +1,62 @@
 from django.views.generic import ListView, CreateView, UpdateView, DeleteView, View
 from django.urls import reverse_lazy
-from django.urls import reverse_lazy
-from .models import  Company, Project, UserProfile
+from .models import  Company, Project, User
 from django.views.generic.edit import CreateView
 from .models import Company
-from django.contrib.auth.models import User
-from django.contrib.auth.forms import UserCreationForm
 from django.shortcuts import render, redirect
 from django.views import View
+from django.contrib.messages import constants
+from django.http import HttpResponse
+from hashlib import sha256
+from django.contrib import messages, auth
+from django.urls import reverse
+from django.contrib.auth import login, authenticate
+from django.contrib.auth.forms import AuthenticationForm
+from django.contrib.auth.decorators import login_required
+from django.views import View
+from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.models import User
+from django.contrib import messages
+from django.urls import reverse_lazy
+from django.views import View
+from django.views.generic.edit import FormView
 
-class RegisterView(View):
-    template_name = 'todos/register.html'
+from .forms import LoginForm, RegisterForm
 
+from django.contrib.auth import login
+from django.contrib import messages
+
+class LoginView(FormView):
+    template_name = 'todos/login.html'
+    form_class = LoginForm
+
+    def form_valid(self, form):
+        username = form.cleaned_data['username']
+        password = form.cleaned_data['password']
+        user = authenticate(username=username, password=password)
+        if user is not None:
+            login(self.request, user)
+            return redirect('company_list')  # Substitua 'company_list' pela URL desejada
+        else:
+            messages.error(self.request, 'Usuário ou senha incorretos.')
+            return super().form_invalid(form)
+
+
+class LogoutView(View):
     def get(self, request):
-        form = UserCreationForm()
-        return render(request, self.template_name, {'form': form})
+        logout(request)
+        return redirect('login')
 
-    def post(self, request):
-        form = UserCreationForm(request.POST)
-        if form.is_valid():
-            form.save()
-            return redirect('login')  # Redireciona para a página de login após o registro bem-sucedido
-        return render(request, self.template_name, {'form': form})
 
+class RegisterView(FormView):
+    template_name = 'todos/register.html'
+    form_class = RegisterForm
+    success_url = reverse_lazy('login')
+
+    def form_valid(self, form):
+        form.save()
+        messages.success(self.request, 'Registro bem-sucedido. Agora você pode fazer login.')
+        return super().form_valid(form)
 
 # Visualização para listar todas as empresas do usuário logado
 class CompanyListView(ListView):
@@ -43,7 +77,7 @@ class CompanyCreateView(CreateView):
     success_url = reverse_lazy('todo_list')
 
     #def form_valid(self, form):
-    #    form.instance.creator = User.objects.first()  # Defina o criador como o primeiro usuário
+    #    form.instance.creator = Username.objects.first()  # Defina o criador como o primeiro usuário
     #    return super().form_valid(form)
 
 
@@ -91,7 +125,9 @@ class ProjectUpdateView(UpdateView):
 
 class ProjectDeleteView(DeleteView):
     model = Project
-    template_name = 'todos/project_delete.html'  
+    template_name = 'todos/project_delete.html'
+
     def get_success_url(self):
-        reverse_lazy('todos/project_delete.html')
+        # Use reverse to generate the URL based on the name of the URL pattern.
+        return reverse('company_detail_list', kwargs={'pk': self.object.company.id})
 

@@ -34,7 +34,6 @@ THIRD_PARTY_APPS = [
 
 MY_APPS = [
     "todos.apps.TodosConfig",
-    #"usuarios",
     
 ]
 
